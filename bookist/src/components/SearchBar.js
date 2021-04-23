@@ -24,14 +24,16 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="search">
         <input
           value={this.state.userInput}
           type="text"
           onChange={(e) => this.handleChange(e.target.value)}
         />
         <button onClick={() => this.handleClick()}>Search</button>
-        <button onClick={() => this.handleClear()}>Clear Search</button>
+        {this.state.userInput.length > 0 && (
+          <button onClick={() => this.handleClear()}>Clear Search</button>
+        )}
       </div>
     );
   }

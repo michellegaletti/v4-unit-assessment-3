@@ -13,7 +13,7 @@ class App extends Component {
 
     this.state = {
       shelf: [],
-      books: data,
+      books: data.map((element) => ({ ...element, clickable: true })),
     };
 
     this.addToShelf = this.addToShelf.bind(this);
@@ -23,13 +23,19 @@ class App extends Component {
   }
 
   addToShelf = (bookToAdd) => {
-    console.log(bookToAdd);
     let shelfAdd = [...this.state.shelf, bookToAdd];
-    this.setState({ shelf: shelfAdd });
+    let newBooks = this.state.books.map((element) =>
+      element.title === bookToAdd ? { ...element, clickable: false } : element
+    );
+    this.setState({ shelf: shelfAdd, books: newBooks });
   };
 
   clearShelf() {
-    this.setState({ shelf: [] });
+    let bookArray = this.state.books.map((element) => ({
+      ...element,
+      clickable: true,
+    }));
+    this.setState({ shelf: [], books: bookArray });
   }
 
   filterBooks(input) {
@@ -43,20 +49,24 @@ class App extends Component {
   }
 
   reset() {
-    this.setState({ books: data });
+    this.setState({
+      books: data.map((element) => ({ ...element, clickable: true })),
+    });
   }
 
   render() {
     return (
-      <div>
+      <div className="app">
         <Header />
         <SearchBar filterBooks={this.filterBooks} reset={this.reset} />
         <div className="navItems">
-          <p>Book List</p>
-          <p>Shelf</p>
+          <BookList books={this.state.books} addToShelf={this.addToShelf} />
+          <Shelf
+            shelf={this.state.shelf}
+            clearShelf={this.clearShelf}
+            isEmpty={this.isEmpty}
+          />
         </div>
-        <BookList books={this.state.books} addToShelf={this.addToShelf} />
-        <Shelf shelf={this.state.shelf} clearShelf={this.clearShelf} />
       </div>
     );
   }

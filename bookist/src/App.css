@@ -1,8 +1,87 @@
-.App {
+* {
+  background-color: #f4f4f4;
+}
+
+.header {
+  position: fixed;
+  height: 75px;
+  top: 0;
+  width: 100%;
+  margin-top: 0;
+  color: #539e92;
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  background-color: #f4f4f4;
+  padding-top: 2%;
+  box-shadow: 0px 0px 50px rgb(125, 125, 125);
+}
+
+.bookImg {
+  width: 200px;
+  height: 300px;
+}
+
+.bookList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 75%;
+  border-right: 3px solid black;
+}
+
+.bookItem {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.shelfBooks {
+  max-width: 25%;
+}
+
+.clearShelf {
   text-align: center;
 }
 
+.mapTitles {
+  max-width: 75%;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+.bookInfo {
+  max-width: 200px;
+}
+
+button {
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+button:hover {
+  background-color: #539e92;
+  color: white;
+  font-weight: 700;
+}
+
 .navItems {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navTitles {
+  margin-top: 2%;
+  text-align: center;
+}
+
+.search {
+  margin: 0 auto;
+  margin-top: 10%;
+  margin-right: 35%;
+  margin-left: 35%;
+  margin-bottom: 5%;
+  text-align: center;
   display: flex;
   justify-content: space-evenly;
 }
